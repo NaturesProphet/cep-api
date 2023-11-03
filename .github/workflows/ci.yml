@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  Testes:
+  Test:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +26,7 @@ jobs:
       run: npm test
 
   Build:
-    needs: Testes
+    needs: Test
     runs-on: ubuntu-latest
 
     steps:
