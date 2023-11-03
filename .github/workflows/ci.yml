@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  unit-tests:
+  Testes:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,8 +25,8 @@ jobs:
     - name: Run Unit Tests
       run: npm test
 
-  build-docker-image:
-    needs: unit-tests
+  Build:
+    needs: Testes
     runs-on: ubuntu-latest
 
     steps:
@@ -43,8 +43,8 @@ jobs:
       env:
         DOCKER_BUILDKIT: 1
 
-  push-docker-image:
-    needs: build-docker-image
+  Push:
+    needs: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -61,7 +61,7 @@ jobs:
 
     - name: Push Docker Image
       run: |
-        IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
+        IMAGE_ID=ghcr.io/${{ github.repository }}
         # Regex pra deixar tudo minusculo
         IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
         IMAGE_TAG=${{ steps.extract_branch.outputs.branch }}
@@ -69,4 +69,3 @@ jobs:
         docker push $IMAGE_ID:$IMAGE_TAG
         echo imagem gerada: $IMAGE_ID:$IMAGE_TAG
         docker push $IMAGE_ID:$IMAGE_TAG
-
