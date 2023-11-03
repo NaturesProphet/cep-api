@@ -1,5 +1,5 @@
 # CEP
-![Github Actions](https://github.com/naturesprophet/cep-api/actions/workflows/ci.yml/badge.svg)
+[![Github Actions](https://github.com/naturesprophet/cep-api/actions/workflows/ci.yml/badge.svg)](https://github.com/NaturesProphet/cep-api/actions)
 [![Test Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/naturesprophet/cep-api)
 
 API simples com um endpoint GET para consulta de CEP.
