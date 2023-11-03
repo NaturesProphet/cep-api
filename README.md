@@ -1,5 +1,5 @@
 # CEP
-[![GitHub Actions](https://github.com/NaturesProphet/cep-api/workflows/CI/badge.svg)](https://github.com/seu-usuario/seu-repositorio/actions)
+[![GitHub Actions](https://github.com/NaturesProphet/cep-api/workflows/CI/badge.svg)](https://github.com/NaturesProphet/cep-api/actions)
 
 
 API simples com um endpoint GET para consulta de CEP.
