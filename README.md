@@ -1,9 +1,6 @@
 # CEP
-[![GitHub Actions](https://github.com/naturesprophet/cep-api/workflows/CI/badge.svg)](https://github.com/naturesprophet/cep-api/actions)
-
-[![Test Coverage](https://img.shields.io/badge/coverage-90%25-brightgreen)](https://github.com/naturesprophet/cep-api)
-
-[![Coverage Status](https://coveralls.io/repos/github/naturesprophet/cep-api/badge.svg?branch=main)](https://coveralls.io/github/naturesprophet/cep-api?branch=main)
+![Github Actions](https://github.com/naturesprophet/cep-api/actions/workflows/ci.yml/badge.svg)
+[![Test Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/naturesprophet/cep-api)
 
 API simples com um endpoint GET para consulta de CEP.
 
