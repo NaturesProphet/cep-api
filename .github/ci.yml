@@ -1,0 +1,74 @@
+#Playground: https://rhysd.github.io/actionlint/
+name: Garcia CI
+env:
+  NODE_VERSION: 18
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: $NODE_VERSION
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Run Unit Tests
+      run: npm test
+
+  build-docker-image:
+    needs: unit-tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: $NODE_VERSION
+
+    - name: Build Docker Image
+      run: docker build -t img .
+      env:
+        DOCKER_BUILDKIT: 1
+
+  push-docker-image:
+    needs: build-docker-image
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Login to GitHub Container Registry
+      run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u username --password-stdin
+
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+
+    - name: Push Docker Image
+      run: |
+        IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
+        # Regex pra deixar tudo minusculo
+        IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+        IMAGE_TAG=${{ steps.extract_branch.outputs.branch }}
+        docker tag img $IMAGE_ID:$IMAGE_TAG
+        docker push $IMAGE_ID:$IMAGE_TAG
+        echo imagem gerada: $IMAGE_ID:$IMAGE_TAG
+        docker push $IMAGE_ID:$IMAGE_TAG
+
