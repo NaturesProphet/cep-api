@@ -1,7 +1,7 @@
 # CEP
 
 [![Github Actions](https://github.com/naturesprophet/cep-api/actions/workflows/ci.yml/badge.svg)](https://github.com/NaturesProphet/cep-api/actions)
-[![codecov](https://codecov.io/gh/naturesProphet/cep-api/branch/main/graph/badge.svg?token=0160b944-1190-4f63-8b44-08a133faaa52)](https://codecov.io/gh/naturesProphet/cep-api)
+[![codecov](https://codecov.io/gh/naturesProphet/cep-api/branch/main/graph/badge.svg?token=ed178c89-b7f7-4f3b-8234-5329287b3bb2)](https://codecov.io/gh/naturesProphet/cep-api)
 
 API simples com um endpoint GET para consulta de CEP.
 
